@@ -1,5 +1,7 @@
 package org.bswest.checkers.game;
 
+import org.bswest.checkers.game.states.GameState;
+
 public class GameStateManager {
 	private GameState currentState;
 	
@@ -15,5 +17,9 @@ public class GameStateManager {
 	
 	public GameState getCurrentState(){
 		return currentState;
+	}
+	
+	public void setCurrentState(GameState cs){
+		this.currentState = cs;
 	}
 }
