@@ -1,7 +1,5 @@
 package org.bswest.checkers.game;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
 import org.bswest.checkers.util.Sizes;

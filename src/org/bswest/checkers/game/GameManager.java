@@ -7,62 +7,47 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 import org.bswest.checkers.game.states.GameState;
-import org.bswest.checkers.game.states.Menu;
+import org.bswest.checkers.game.states.MenuState;
+import org.bswest.checkers.game.states.PlayState;
 import org.bswest.checkers.util.Colors;
 import org.bswest.checkers.util.Log;
 import org.bswest.checkers.util.Sizes;
 
-public class GameManager extends JPanel implements KeyListener{
-	
-	private GameStateManager gsm;
-	
-	public GameManager(){
+public class GameManager extends JPanel implements KeyListener {
+
+	private GameStateManager	gsm;
+
+	public GameManager() {
 		init();
 	}
-	
-	private void init(){
+
+	private void init() {
 		this.setSize(Sizes.DEFAULT);
 		this.setBackground(Colors.BACKGROUND);
-		
-		if(gsm == null){
+
+		if (gsm == null) {
 			gsm = new GameStateManager();
 		}
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
-		switch(gsm.getCurrentState().getState()){
-			case GameState.STATE_PLAYING:
-				g.drawOval(100, 100, 10, 10);
-				break;
-			case GameState.STATE_PAUSED:
-				g.drawOval(200, 200, 20, 20);
-				break;
-			case GameState.STATE_MENU:
-				g.drawOval(300, 300, 30, 30);
-				break;
-			default:
-				g.drawOval(123, 321, 12, 23);
-				break;
-		}
-	}
-	public void start(){
-		gsm.setCurrentState(new Menu());
-		
+
+		gsm.getCurrentState().paint(g);
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void start() {
+		gsm.setCurrentState(gsm.getMenuState());
+		repaint();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		String state = gsm.getCurrentState().getState();
-		
+
+		gsm.getCurrentState().keyPressed(e);
+
 		/*
 		 * First attempt at key input handling
 		 * 
@@ -73,28 +58,28 @@ public class GameManager extends JPanel implements KeyListener{
 		 * use this state to call the necessary methods for the input
 		 */
 		Log.log(e.getKeyChar() + " " + state);
-		switch(e.getKeyChar()){
+		switch (e.getKeyChar()) {
 			case '1':
-				if(state == GameState.STATE_MENU){
-				// gsm.getCurrentState().setState(GameState.STATE_PLAYING);
+				if (state == GameState.STATE_MENU) {
+					gsm.setCurrentState(gsm.getPlayState());
 					repaint();
-				} else if(state == GameState.STATE_PLAYING){
-				// gsm.getCurrentState().setState(GameState.STATE_PAUSED);
+				} else if (state == GameState.STATE_PLAYING) {
+					gsm.setCurrentState(gsm.getPausedState());
 					repaint();
-				} else if(state == GameState.STATE_PAUSED){
-					gsm.setCurrentState(new Menu());
+				} else if (state == GameState.STATE_PAUSED) {
+					gsm.setCurrentState(gsm.getMenuState());
 					repaint();
 				}
 				break;
 			case '2':
-				if(state == GameState.STATE_MENU){
-				//	gsm.getCurrentState().setState(GameState.STATE_PAUSED);
+				if (state == GameState.STATE_MENU) {
+					gsm.setCurrentState(gsm.getPausedState());
 					repaint();
-				} else if(state == GameState.STATE_PLAYING){
-					gsm.setCurrentState(new Menu());
+				} else if (state == GameState.STATE_PLAYING) {
+					gsm.setCurrentState(gsm.getMenuState());
 					repaint();
-				} else if(state == GameState.STATE_PAUSED){
-				//	gsm.getCurrentState().setState(GameState.STATE_PLAYING);
+				} else if (state == GameState.STATE_PAUSED) {
+					gsm.setCurrentState(gsm.getPlayState());
 					repaint();
 				}
 				break;
@@ -102,8 +87,10 @@ public class GameManager extends JPanel implements KeyListener{
 	}
 
 	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }
