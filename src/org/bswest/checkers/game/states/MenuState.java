@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class MenuState extends GameState {
 	private ArrayList<String>	menuOptions;
-	private final int MENU_X = 100;
-	private final int MENU_INC = 20;
+	private final int			MENU_X		= 100;
+	private final int			MENU_INC	= 20;
 	// Not final so that it can be incremented for each option
-	private int MENU_Y = 80; 
+	private int					MENU_Y		= 80;
 
 	public MenuState() {
 		super();

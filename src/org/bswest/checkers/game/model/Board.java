@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import org.bswest.checkers.util.Colors;
 
 public class Board {
-	public static final int WIDTH = 8, HEIGHT = 8;
-	private final Square[][] board = new Square[WIDTH][HEIGHT];
+	public static final int		WIDTH	= 8, HEIGHT = 8;
+	private final Square[][]	board	= new Square[WIDTH][HEIGHT];
 
 	public Board() {
 		init();

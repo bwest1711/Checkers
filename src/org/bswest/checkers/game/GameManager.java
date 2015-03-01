@@ -48,7 +48,7 @@ public class GameManager extends JPanel implements KeyListener {
 		options.add("1. First one!");
 		options.add("2. Second one!");
 		options.add("3. Third one!");
-		
+
 		gsm.setMenuOptions(options);
 	}
 
@@ -67,7 +67,7 @@ public class GameManager extends JPanel implements KeyListener {
 		 * once the key has been determined check for the current state of the game
 		 * use this state to call the necessary methods for the input
 		 */
-		//Log.log(e.getKeyChar() + " " + state);
+		// Log.log(e.getKeyChar() + " " + state);
 		switch (e.getKeyChar()) {
 			case '1':
 				if (state == GameState.STATE_MENU) {

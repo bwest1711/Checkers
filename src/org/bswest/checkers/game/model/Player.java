@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.bswest.checkers.util.Colors;
 
 public class Player {
-	private ArrayList<Checker> checkers;
+	private ArrayList<Checker>	checkers;
 
 	public Player() {
 		init();

@@ -3,8 +3,8 @@ package org.bswest.checkers.game.model;
 import java.awt.Color;
 
 public class Square {
-	public static final int	WIDTH = 40, HEIGHT = 40;
-	public static final int START_X = 40, START_Y = 40;
+	public static final int	WIDTH	= 40, HEIGHT = 40;
+	public static final int	START_X	= 40, START_Y = 40;
 	private final int		x, y;
 	private final int		xPos, yPos;
 	private Color			color;
