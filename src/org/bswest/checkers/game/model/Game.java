@@ -19,7 +19,7 @@ public class Game {
 	
 	public void paint(Graphics g){
 		board.paint(g);
-		// player.paint(g);
+		player.paint(g);
 		// comp.paint(g);
 	}
 }

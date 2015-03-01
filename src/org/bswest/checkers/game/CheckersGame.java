@@ -2,6 +2,7 @@ package org.bswest.checkers.game;
 
 import javax.swing.JFrame;
 
+import org.bswest.checkers.util.Log;
 import org.bswest.checkers.util.Sizes;
 
 public class CheckersGame extends JFrame{
@@ -18,11 +19,13 @@ public class CheckersGame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		
-		if(gm == null) {
+		try {
 			gm = new GameManager();
 			this.add(gm);
 			this.addKeyListener(gm);
 			gm.start();
+		} catch(Exception e){
+			Log.error("GameManager failed", e);
 		}
 	}
 }

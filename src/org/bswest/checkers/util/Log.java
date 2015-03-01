@@ -12,4 +12,9 @@ public final class Log {
 	public static void log(char c){
 		System.out.println(c);
 	}
+
+	public static void error(String string, Exception e) {
+		System.out.println(string);
+		e.printStackTrace();
+	}
 }

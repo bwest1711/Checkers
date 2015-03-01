@@ -1,11 +1,11 @@
 package org.bswest.checkers;
 
-import org.bswest.checkers.game.Checkers;
+import org.bswest.checkers.game.CheckersGame;
 
 public class Controller {
 
 	public static void main(String[] args) {
-		Checkers c = new Checkers();
+		CheckersGame c = new CheckersGame();
 	}
 
 }
