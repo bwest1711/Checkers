@@ -3,12 +3,11 @@ package org.bswest.checkers.game;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import org.bswest.checkers.game.states.GameState;
-import org.bswest.checkers.game.states.MenuState;
-import org.bswest.checkers.game.states.PlayState;
 import org.bswest.checkers.util.Colors;
 import org.bswest.checkers.util.Log;
 import org.bswest.checkers.util.Sizes;
@@ -39,7 +38,18 @@ public class GameManager extends JPanel implements KeyListener {
 
 	public void start() {
 		gsm.setCurrentState(gsm.getMenuState());
+		setMenuOptions();
 		repaint();
+	}
+
+	private void setMenuOptions() {
+		ArrayList<String> options = new ArrayList<String>();
+
+		options.add("1. First one!");
+		options.add("2. Second one!");
+		options.add("3. Third one!");
+		
+		gsm.setMenuOptions(options);
 	}
 
 	@Override
@@ -57,7 +67,7 @@ public class GameManager extends JPanel implements KeyListener {
 		 * once the key has been determined check for the current state of the game
 		 * use this state to call the necessary methods for the input
 		 */
-		Log.log(e.getKeyChar() + " " + state);
+		//Log.log(e.getKeyChar() + " " + state);
 		switch (e.getKeyChar()) {
 			case '1':
 				if (state == GameState.STATE_MENU) {

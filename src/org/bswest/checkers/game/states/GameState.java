@@ -27,6 +27,6 @@ public class GameState {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		Log.log(e.getKeyChar());
+		//Log.log(e.getKeyChar());
 	}
 }

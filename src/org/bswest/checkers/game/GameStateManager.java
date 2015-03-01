@@ -1,5 +1,7 @@
 package org.bswest.checkers.game;
 
+import java.util.ArrayList;
+
 import org.bswest.checkers.game.states.GameState;
 import org.bswest.checkers.game.states.MenuState;
 import org.bswest.checkers.game.states.PauseState;
@@ -29,7 +31,7 @@ public class GameStateManager {
 		this.currentState = cs;
 	}
 
-	public GameState getPlayState() {
+	public PlayState getPlayState() {
 		if (playState == null) {
 			playState = new PlayState();
 		}
@@ -37,14 +39,18 @@ public class GameStateManager {
 		return playState;
 	}
 
-	public GameState getMenuState() {
+	public MenuState getMenuState() {
 		if (menuState == null) {
 			menuState = new MenuState();
 		}
 		return menuState;
 	}
 
-	public GameState getPausedState() {
+	public void setMenuOptions(ArrayList<String> options) {
+		getMenuState().getMenuOptions().addAll(options);
+	}
+
+	public PauseState getPausedState() {
 		if (pauseState == null) {
 			pauseState = new PauseState();
 		}

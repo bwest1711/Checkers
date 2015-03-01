@@ -3,11 +3,19 @@ package org.bswest.checkers.game.states;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import org.bswest.checkers.game.model.Game;
 import org.bswest.checkers.util.Log;
 
 public class PlayState extends GameState {
+	private Game game;
+	
 	public PlayState() {
 		super();
+		init();
+	}
+	
+	private void init(){
+		game = new Game();
 	}
 
 	public String getState() {
@@ -15,7 +23,7 @@ public class PlayState extends GameState {
 	}
 
 	public void paint(Graphics g) {
-		g.drawOval(100, 100, 10, 10);
+		game.paint(g);
 	}
 
 	public void keyPressed(KeyEvent e) {
