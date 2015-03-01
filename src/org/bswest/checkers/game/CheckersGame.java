@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 
 import org.bswest.checkers.util.Sizes;
 
-public class Checkers extends JFrame{
+public class CheckersGame extends JFrame{
 	private GameManager gm;
 
-	public Checkers(){
+	public CheckersGame(){
 		super("Checkers");
 		init();
 	}
